@@ -1,0 +1,247 @@
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  cursor: pointer;
+  user-select: none;
+}
+.signup-left-box a {
+  text-decoration: none;
+  color: black;
+}
+
+.signup-title {
+  font-family: "Huglife";
+  font-size: 5rem;
+  margin: 1rem 0 2rem 0;
+}
+.signup-left-box form label {
+  display: none;
+}
+.signup-input {
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+.signup-input > div:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.signup-input-box {
+  position: relative;
+  margin: 10px 0;
+  /* border: 1px solid red; */
+  height: 60px;
+}
+.signup-input-box > input {
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+  border-bottom: 1px solid gray;
+  font-size: 1rem;
+  height: 35px;
+  width: 98.3%;
+  padding-left: 0.5rem;
+}
+.signup-input-box > input::placeholder {
+  /* color: transparent;setIsLogin(true); */
+}
+.signup-input-box > label {
+  position: absolute;
+  left: 0;
+  top: -0.5rem;
+  font-size: 1.2rem;
+  display: none;
+}
+.signup-input-box > input:focus,
+.signup-input-box > input:not(:placeholder-shown) {
+  border: 1px solid rgb(19, 209, 19);
+  outline: none;
+}
+.signup-errMsg {
+  position: absolute;
+  color: red;
+  font-size: 11px;
+  width: 100%;
+  text-align: center;
+}
+
+.signup-button-box {
+  width: 100%;
+  height: 100px;
+  /* border: 2px solid green; */
+  margin: 4rem 0;
+  position: relative;
+}
+.signup-btn {
+  width: 100%;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  line-height: 35px;
+  background-color: rgb(238, 238, 238);
+  /* margin: 0rem 0; */
+}
+
+.signup-btn:hover {
+  border: 1px solid black;
+  background-color: lightgray;
+  transition: 0.5s;
+}
+
+.signup-btn:not(:hover) {
+  border: 1px solid gray;
+  background-color: rgb(238, 238, 238);
+  transition: 0.5s;
+}
+
+.signup-login-container {
+  margin-top: 0rem;
+}
+.signup-button-box > div:not(:first-child) {
+  /* position: absolute; */
+  /* left: 0.5rem; */
+  width: 100%;
+  height: 20px;
+  margin-top: 0rem;
+  text-align: right;
+}
+.signup-login {
+  margin-top: 0rem;
+}
+.signup-button-box span {
+  font-size: 13px;
+}
+.signup-button-box span:last-child {
+  border-bottom: 1px solid black;
+  margin-left: 0.5rem;
+}
+#signup-text {
+  font-size: 0.9rem;
+}
+@media screen and (min-width: 900px) {
+  .signup-left-box {
+    padding: 0 1rem 0 0.5rem;
+    width: 400px;
+    height: 620px;
+    border: 1px solid black;
+  }
+}
+/*--------------------------------------------------------------------*/
+@media screen and (max-width: 900px) {
+  .signup-left-box {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    padding: 0 0.5rem 0 0.5rem;
+    width: 400px;
+    height: 620px;
+  }
+}
+
+/*! phone */
+@media screen and (max-device-width: 450px) {
+  .signup-left-box {
+    padding: 0;
+    width: 100%;
+    height: 90%;
+    border: none;
+  }
+  .signup-left-box a {
+    text-decoration: none;
+    color: black;
+  }
+  .signup-title div {
+    font-size: 10rem;
+    font-family: "Huglife";
+  }
+  .signup-input {
+    margin-top: 4rem;
+    height: 100%;
+    width: 100%;
+  }
+  .signup-errMsg {
+    bottom: 29rem;
+  }
+  .signup-errMsg > div {
+    font-size: 1.5rem;
+  }
+  .signup-input > div:first-child {
+    font-size: 3.5rem;
+  }
+  .signup-input-form {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5rem 0;
+  }
+  .signup-input-box {
+    position: relative;
+    /* margin: 10px 0; */
+    /* height: 60px; */
+    padding: 2rem 0;
+  }
+  .signup-input-box > input {
+    background: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 5px;
+    border-bottom: 1px solid gray;
+    font-size: 2rem;
+    height: 6rem;
+    /* width: 98.3%; */
+    /* padding-left: 0.5rem; */
+  }
+  .signup-input-box > input::placeholder {
+    /* color: transparent;setIsLogin(true); */
+  }
+  .signup-input-box > label {
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    /* font-size: 3rem; */
+  }
+  .signup-input-box > input:focus,
+  .signup-input-box > input:not(:placeholder-shown) {
+    border: 1px solid rgb(19, 209, 19);
+    outline: none;
+  }
+  .signup-button-box {
+    margin-top: 5rem;
+    flex: 0 1 20rem;
+  }
+  .signup-btn {
+    /* width: 100%; */
+    height: 5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 2rem;
+    line-height: 35px;
+  }
+  .signup-login {
+    margin-top: 2rem;
+  }
+  .signup-login > span {
+    font-size: 2rem;
+  }
+  #signup-text {
+    font-size: 2rem;
+  }
+}

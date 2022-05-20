@@ -1,0 +1,76 @@
+#mypage {
+  font-family: 'BinggraeMelona';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fefcff;
+  flex: 1 1 0;
+}
+#delete-account {
+  position: absolute;
+  top: 5rem;
+  right: 0;
+}
+.delete-account-container {
+  position: relative;
+  right: 2rem;
+}
+.delete-account-container > button {
+  width: 70px;
+  height: 35px;
+  font-size: 14px;
+  margin-top: 0.5rem;
+  background-color: black;
+  color: white;
+  border-radius: 0.5rem;
+  opacity: 50%;
+}
+.delete-account-container > button:hover {
+  opacity: 100%;
+}
+
+.delete-modal-container {
+  position: fixed;
+  padding: 1rem;
+  top: 40%;
+  left: 40%;
+  width: 300px;
+  height: 170px;
+  font-family: 'Gulimn';
+  line-height: 150%;
+  text-align: center;
+  border-radius: 1rem;
+  z-index: 1000;
+  transition: 1s;
+  font-size: 14px;
+  background-color: #e4e0d6;
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+  /* transition: all 1s ease-in-out; */
+}
+.delete-modal-btn {
+  display: flex;
+  justify-content: space-evenly;
+  right: 1rem;
+}
+.delete-modal-btn-button {
+  width: 70px;
+  height: 35px;
+  font-size: 14px;
+  margin-top: 0.5rem;
+  background-color: black;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+.delete-modal-btn-button:hover {
+  background-color: salmon;
+  color: black;
+}
+/* 클때 */
+@media screen and (min-width: 900px) {
+}
+/* 작을 때 */
+@media screen and (max-width: 900px) {
+}

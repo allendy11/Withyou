@@ -1,0 +1,60 @@
+#elements-modal {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  font-family: "BinggraeMelona";
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+#elements-modal-upload {
+  display: flex;
+  flex-flow: wrap;
+  flex: 1;
+  overflow-y: auto;
+  text-align: center;
+}
+
+#elements-modal-upload > img {
+  width: 140px;
+  height: 100px;
+  margin: 4px 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 1;
+  display: inline-block;
+}
+
+#elements-modal-upload > img:hover {
+  transition: 0.1s;
+  border: 2px solid black;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 900px) {
+  #elements-modal {
+    flex-wrap: row wrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  #elements-modal-upload {
+    overflow: auto;
+  }
+}
+@media screen and (max-device-width: 450px) {
+  #elements-modal-upload {
+    overflow: auto;
+  }
+  #elements-modal-upload > img {
+    width: 280px;
+    height: 200px;
+    margin: 1rem 0.8rem;
+  }
+}

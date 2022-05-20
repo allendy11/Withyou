@@ -1,0 +1,108 @@
+#top-menu {
+  background-color: #fefcff;
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  font-family: "BinggraeMelona";
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-menu-left {
+  display: flex;
+  width: 120px;
+  justify-content: center;
+}
+
+.top-menu-left > div {
+  cursor: pointer;
+}
+
+.top-menu-right {
+  width: 250px;
+  display: flex;
+}
+
+.top-menu-right > div {
+  margin-left: 1rem;
+}
+
+#top-menu-save {
+  font-size: 20px;
+  width: 14rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.top-menu-left > div:hover {
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+#download:hover,
+#save:hover {
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+#delete-all-object {
+  font-size: 20px;
+}
+
+#delete-all-object:hover {
+  transition: 0.1s;
+  font-size: 18px;
+}
+@media screen and (max-width: 900px) {
+  #top-menu-save {
+    width: 170px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .top-menu-left {
+    width: 100px;
+  }
+
+  .top-menu-right {
+    width: 170px;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  #top-menu {
+    background-color: #fefcff;
+    width: 100%;
+    height: 3vh;
+    line-height: 2rem;
+    border-bottom: 2px solid lightgray;
+    display: flex;
+    font-family: "BinggraeMelona";
+    align-items: center;
+  }
+  .top-menu-left {
+    font-size: 35px;
+  }
+  #delete-all-object {
+    font-size: 35px;
+  }
+  #top-menu-save {
+    font-size: 35px;
+    width: 15vh;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #delete-all-object {
+    font-size: 35px;
+  }
+
+  #delete-all-object:hover,
+  .top-menu-left > div:hover,
+  #download:hover,
+  #save:hover {
+    font-size: 35px;
+  }
+}
