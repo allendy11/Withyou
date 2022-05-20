@@ -1,0 +1,15 @@
+module.exports = {
+  signin: require("./user/signin.js"),
+  signup: require("./user/signup.js"),
+  signout: require("./user/signout.js"),
+  deleteAccount: require("./user/delete.js"),
+  callback: require("./user/oauth/callback"),
+  github: require("./user/oauth/github.js"),
+  naver: require("./user/oauth/naver"),
+  kakao: require("./user/oauth/kakao"),
+  card: require("./cards/card.js"),
+  deleteCard: require("./cards/deleteCard"),
+  postCard: require("./cards/cardPost"),
+  edit: require("./user/edit"),
+  profile: require("./profile/profile"),
+};
