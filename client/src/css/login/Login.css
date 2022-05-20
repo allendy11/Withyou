@@ -1,0 +1,458 @@
+.login-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  font-family: "BinggraeMelona";
+}
+
+.button {
+  cursor: pointer;
+  user-select: none;
+}
+.login-left-box a {
+  text-decoration: none;
+  color: black;
+}
+
+.login-title {
+  font-family: "Huglife";
+  font-size: 5rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.login-input {
+  /* border: 3px solid black; */
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.login-input > div:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.login-input-box {
+  position: relative;
+  margin: 10px 0;
+}
+
+.login-input-box > input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 20px 0px 5px 0px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.login-input-box > input::placeholder {
+  color: transparent;
+}
+
+.login-input-box > input:placeholder-shown + label {
+  color: black;
+  font-size: 1.2rem;
+  top: 15px;
+}
+
+.login-input-box > input:focus + label,
+.login-input-box > label {
+  color: black;
+  font-size: 8pt;
+  pointer-events: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+
+.login-input-box > input:focus,
+.login-input-box > input:not(:placeholder-shown) {
+  border-bottom: 1px solid rgb(19, 209, 19);
+  outline: none;
+}
+
+.login-errMsg {
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  color: red;
+  font-size: 11px;
+}
+
+.login-button-box {
+  width: 100%;
+  height: 100px;
+  margin: 3.5rem 0 2.5rem 0;
+  position: relative;
+}
+
+.login-button-box > div:not(:first-child) {
+  width: 100%;
+}
+
+.login-btn,
+.oauth-box {
+  width: 100%;
+  height: 35px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 19px;
+  line-height: 35px;
+  background-color: rgb(238, 238, 238);
+}
+.login-btn:hover,
+.oauth-box:hover {
+  border: 1px solid black;
+  background-color: lightgray;
+  transition: 0.5s;
+}
+
+.login-btn:not(:hover),
+.oauth-box:not(:hover) {
+  border: 1px solid gray;
+  background-color: rgb(238, 238, 238);
+  transition: 0.5s;
+}
+
+.login-forgot-password {
+  margin: 0.5rem 0;
+  position: absolute;
+  left: 0;
+}
+.login-forgot-password > span {
+  border-bottom: 1px solid black;
+  font-size: 0.9rem;
+}
+.login-signup {
+  position: absolute;
+  right: 0;
+  top: 3rem;
+  font-size: 0.9rem;
+}
+.login-signup > span:not(:first-child) {
+  border-bottom: 1px solid black;
+  margin-left: 0.5rem;
+}
+.login-oauth {
+  width: 100%;
+  position: relative;
+  height: 9rem;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+}
+.oauth-box {
+  margin: 0.7rem 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  width: 180px;
+  font-size: 22px;
+}
+.oauth-box > div:first-child {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.oauth-box img {
+}
+#github-logo {
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+}
+/* #naver-logo {
+  width: 30px;
+  height: 30px;
+} */
+#kakao-logo {
+  padding: 0.2rem;
+  border-radius: 5px;
+  background-color: yellow;
+  width: 28px;
+  height: 28px;
+  margin-left: 10px;
+}
+.oauth-name {
+  margin: 0 auto;
+}
+@media screen and (min-width: 900px) {
+  .login-box {
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    width: 880px;
+    height: 650px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .close-btn {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.2rem;
+    font-size: 20px;
+    border: 1px solid gray;
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    border-radius: 10px;
+  }
+  .login-left-box {
+    border: 1px solid black;
+    padding: 0 0.7rem 0 0.7rem;
+    width: 400px;
+    height: 620px;
+  }
+  .login-right-box {
+    width: 400px;
+    height: 620px;
+    border: 1px solid black;
+    /* padding: 1rem; */
+  }
+  .login-right-box > img {
+    /* border: 1px solid red; */
+    width: 400px;
+    height: 620px;
+    object-fit: cover;
+  }
+}
+/*--------------------------------------------------------------------*/
+@media screen and (max-width: 900px) {
+  .login-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  .close-btn {
+    position: absolute;
+    top: 5.4rem;
+    right: 0;
+    font-size: 20px;
+    border: 1px solid gray;
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    border-radius: 10px;
+  }
+
+  .login-left-box {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    padding: 0 0.5rem 0 0.5rem;
+    width: 400px;
+    height: 620px;
+  }
+  .login-right-box {
+    display: none;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .login-box {
+    height: 75%;
+    position: absolute;
+    top: 10rem;
+  }
+  .login-left-box {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .login-left-box > a {
+    text-decoration: none;
+  }
+  .login-title {
+    height: 20rem;
+    font-family: "Huglife";
+    color: black;
+    font-size: 10rem;
+  }
+  .login-input {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .login-input > div:first-child {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+  .login-input-box {
+    flex: 0 1 6rem;
+  }
+  .login-errMsg {
+    flex: 1 1 0;
+    top: 22rem;
+  }
+  .login-errMsg > div {
+    font-size: 1.5rem;
+  }
+  .login-button-box {
+    margin-top: 10rem;
+    height: 12rem;
+  }
+  .login-button-box > div:first-child {
+    height: 5rem;
+    line-height: 5.5rem;
+    font-size: 2rem;
+  }
+  .login-text {
+    height: 4rem;
+  }
+  .login-text-box {
+    text-align: left;
+  }
+  .login-text-box > span {
+    font-size: 1.5rem;
+  }
+  .login-forgot-password {
+    position: unset;
+  }
+  .login-signup {
+    position: absolute;
+    right: 0;
+    top: 7rem;
+  }
+  .login-input-box > input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 20px 0px 5px 0px;
+    font-size: 3rem;
+    width: 100%;
+  }
+
+  .login-input-box > input::placeholder {
+    color: transparent;
+  }
+
+  .login-input-box > input:placeholder-shown + label {
+    color: black;
+    font-size: 2.5rem;
+    top: 15px;
+  }
+
+  .login-input-box > input:focus + label,
+  .login-input-box > label {
+    color: black;
+    font-size: 1.2rem;
+    pointer-events: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+  }
+
+  .login-input-box > input:focus,
+  .login-input-box > input:not(:placeholder-shown) {
+    border-bottom: 1px solid rgb(19, 209, 19);
+    outline: none;
+  }
+  .login-oauth {
+    flex: 0 1 7rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 0;
+  }
+
+  .oauth-box {
+    width: 24rem;
+    border: 1px solid gray;
+    height: 6rem;
+    border-radius: 5px;
+    font-size: 25px;
+    line-height: 35px;
+    background-color: rgb(238, 238, 238);
+  }
+  .oauth-box > div:last-child {
+    font-size: 3rem;
+  }
+  #github-logo {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    left: 0.1rem;
+  }
+  /* #naver-logo {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    left: 0;
+  } */
+  #kakao-logo {
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    background-color: yellow;
+    width: 3.7rem;
+    height: 3.7rem;
+    position: absolute;
+    left: -0.5rem;
+  }
+  .oauth-name {
+    margin-left: 4rem;
+  }
+
+  .login-btn:hover,
+  .oauth-box:hover {
+    border: 1px solid black;
+    background-color: lightgray;
+    transition: 0.5s;
+  }
+
+  .login-btn:not(:hover),
+  .oauth-box:not(:hover) {
+    border: 1px solid gray;
+    background-color: rgb(238, 238, 238);
+    transition: 0.5s;
+  }
+  .login-right-box {
+    display: none;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 50px;
+    border: 1px solid gray;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 10px;
+    /* margin-top: 1; */
+  }
+}

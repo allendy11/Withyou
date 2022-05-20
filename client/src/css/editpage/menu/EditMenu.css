@@ -1,0 +1,30 @@
+#detail-property {
+  display: flex;
+  position: relative;
+  background-color: #f8eee7;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  flex: 1;
+}
+#edit-menu-container {
+  width: 20rem;
+}
+.edit--menu-title {
+  padding-left: 1rem;
+}
+@media screen and (max-width: 900px) {
+  #edit-menu-container {
+    display: flex;
+    width: 100%;
+    flex: 1;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  #edit-menu-container {
+    /* position: absolute; */
+    height: 38vh;
+    display: flex;
+    width: 100%;
+  }
+}

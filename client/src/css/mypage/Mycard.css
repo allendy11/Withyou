@@ -1,0 +1,208 @@
+#cards {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: 25rem;
+  border-bottom: 2px solid lightgray;
+}
+#cards > div {
+  margin-top: 2rem;
+}
+.card-box-container {
+  display: flex;
+  align-items: center;
+  height: 15rem;
+  overflow: auto;
+  margin-top: 2.5rem;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  height: 12rem;
+  position: relative;
+}
+
+#move-to-editpage {
+  border: solid black 1px;
+  margin: 10px;
+  width: 210px;
+  height: 150px;
+}
+
+#card-menu {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  padding: 0 0.5rem;
+  width: 13.5rem;
+}
+
+.cardImg {
+  border: solid black 1px;
+  margin: 10px;
+  width: 210px;
+  height: 150px;
+}
+
+.card-download {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 70px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.card-download:hover {
+  background-color: rgb(253, 178, 169);
+  transition: 0.5s;
+}
+.card-download > a {
+  text-decoration: none;
+  color: black;
+}
+.card-download > a:hover {
+  color: black;
+  transition: 0.5s;
+}
+.card-delete {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 70px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.card-delete:hover {
+  background-color: rgb(253, 178, 169);
+  transition: 0.5s;
+  color: black;
+}
+
+/* 작을 때 */
+@media screen and (max-width: 900px) {
+  #cards {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 25rem;
+    border-bottom: 2px solid lightgray;
+  }
+  #cards > div {
+    margin-top: 1.5rem;
+    height: 90%;
+  }
+  .card-box-container {
+    display: inline-block;
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-container {
+    display: inline-block;
+    height: 10.5rem;
+    /* width: 10rem; */
+    /* margin: 0 1rem; */
+  }
+  #move-to-editpage,
+  .card-container img {
+    width: 12rem;
+    height: 8rem;
+  }
+
+  #card-menu {
+    position: absolute;
+    bottom: 0.2rem;
+    left: 0.7rem;
+    width: 90%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .card-download {
+    font-size: 0.6rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+  }
+
+  .card-delete {
+    font-size: 0.6rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/*! phone */
+@media screen and (max-device-width: 450px) {
+  #cards {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    height: 25rem;
+    border-bottom: 2px solid lightgray;
+  }
+  #cards > div {
+    margin-top: 3rem;
+    height: 90%;
+  }
+  .card-box-container {
+    display: inline-block;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-container {
+    /* display: flex;
+    flex-direction: column; */
+    display: inline-block;
+    height: 18rem;
+    width: 23.5rem;
+    margin: 1rem;
+    /* border: 1px solid black; */
+  }
+  #move-to-editpage,
+  .card-container img {
+    width: 21rem;
+    height: 14rem;
+  }
+
+  .cardImg {
+    border: solid black 1px;
+    margin: 10px;
+    width: 210px;
+    height: 150px;
+  }
+  #card-menu {
+    position: absolute;
+    bottom: 1rem;
+    left: 0.6rem;
+    width: 90%;
+    padding: 0;
+    margin: 0;
+  }
+}

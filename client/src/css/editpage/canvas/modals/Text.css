@@ -1,0 +1,63 @@
+#text-modal {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  font-family: "BinggraeMelona";
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#text-button {
+  font-size: 15px;
+  border-radius: 0.3rem;
+  padding: 5px 10px;
+  margin-top: 15px;
+  font-family: "BinggraeMelona";
+  cursor: pointer;
+  border: 2px solid #f2f0ec;
+  background-color: black;
+  color: white;
+}
+
+#text-button:hover {
+  background-color: rgb(253, 178, 169);
+  border-color: black;
+  transition: 0.5s;
+  color: black;
+}
+#text-button:not(:hover) {
+  background-color: black;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 900px) {
+  #text-modal {
+    flex-wrap: row wrap;
+    position: absolute;
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+@media screen and (max-device-width: 900px) {
+  #text-modal {
+    flex-wrap: row wrap;
+    position: absolute;
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  #text-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    width: 300px;
+    height: 60px;
+  }
+}
