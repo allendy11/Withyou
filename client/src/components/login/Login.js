@@ -43,9 +43,7 @@ const Login = ({
         await loadingOff(setLoading);
         setInputErr(true);
       });
-
       const { accessToken } = data.data;
-
       sessionStorage.setItem("isLoginSession", true);
       sessionStorage.setItem("accessTokenSession", accessToken);
       setAccessToken(accessToken);

@@ -1,6 +1,7 @@
 import React from "react";
 import naver from "../../images/naver.png";
 import kakao from "../../images/kakao.png";
+import github from "../../images/github.png";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -35,11 +36,7 @@ const Oauth = () => {
     <div className="login-oauth">
       <div className="oauth-box">
         <div>
-          <img
-            id="github-logo"
-            alt="logo"
-            src="https://image.flaticon.com/icons/png/512/25/25231.png"
-          ></img>
+          <img id="github-logo" alt="logo" src={github}></img>
         </div>
         <div onClick={githubLogin} className="oauth-name button">
           깃허브 로그인
