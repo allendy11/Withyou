@@ -91,7 +91,6 @@ const Signup = ({
               url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signin`,
               data: { email: userInput.email, password: userInput.password },
             });
-
             const { accessToken } = tokenData.data;
 
             sessionStorage.setItem("isLoginSession", true);

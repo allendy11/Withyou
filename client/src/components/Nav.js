@@ -4,24 +4,25 @@ import "../css/Nav.css";
 import "../css/LandingPage.css";
 import Login from "./login/Login";
 import dotenv from "dotenv";
+import axios from "axios";
 dotenv.config();
 
 const Nav = ({
   userInfo,
   setUserInfo,
-  isLogin,
-  setIsLogin,
-  accessToken,
-  setAccessToken,
   loginBtn,
   setLoginBtn,
   signupBtn,
   setSignupBtn,
+  isLogin,
+  setIsLogin,
+  accessToken,
+  setAccessToken,
   landingOn,
   setLandingOn,
   setLoading,
 }) => {
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     if (e.target.id === "login") {
       setLoginBtn(true);
       setSignupBtn(false);
@@ -32,11 +33,22 @@ const Nav = ({
       setLandingOn(false);
     }
     if (e.target.id === "logout") {
-      sessionStorage.clear();
-      setAccessToken("");
-      setIsLogin(false);
-      setLoginBtn(false);
-      window.location.assign(process.env.REACT_APP_CLIENT_LOCAL_URL);
+      try {
+        const data = await axios({
+          method: "GET",
+          url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signout`,
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        });
+        sessionStorage.clear();
+        setAccessToken("");
+        setIsLogin(false);
+        setLoginBtn(false);
+        window.location.assign(process.env.REACT_APP_CLIENT_LOCAL_URL);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
