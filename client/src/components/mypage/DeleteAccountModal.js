@@ -13,11 +13,14 @@ export const DeleteAccountModal = ({
   const accessToken = sessionStorage.getItem("accessTokenSession");
 
   const deleteAccount = async (accessToken) => {
-    await axios.get(`${process.env.REACT_APP_SERVER_LOCAL_URL}/user/delete`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    await axios.delete(
+      `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/delete`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     sessionStorage.clear();
     setAccessToken("");
     setIsLogin(false);
