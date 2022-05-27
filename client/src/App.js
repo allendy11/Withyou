@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import axios from "axios";
 import "./App.css";
 import Spinner from "./components/loading/Spinner";
-import { loadingOn, loadingOff } from "./components/loading/Loading";
+import { spinnerOn, spinnerOff } from "./components/loading/SpinnerSwitch";
 import SuccessMessage from "../src/components/editpage/canvas/modals/SuccessMessage";
 import ClientErrorMessage from "../src/components/editpage/canvas/modals/ClientErrorMessage";
 import ServerErrorMessage from "../src/components/editpage/canvas/modals/ServerErrorMessage";
@@ -52,7 +52,7 @@ export default function App() {
     const accessTokenSession = sessionStorage.getItem("accessTokenSession");
     if (isLoginSession) {
       setIsLogin(isLoginSession);
-      await loadingOff(setLoading);
+      await spinnerOff(setLoading);
     }
     if (accessTokenSession) {
       setAccessToken(accessTokenSession);
@@ -61,7 +61,7 @@ export default function App() {
     const authorizationCode = url.searchParams.get("code");
 
     if (!isLoginSession && authorizationCode) {
-      await loadingOn(setLoading);
+      await spinnerOn(setLoading);
 
       const loginType = sessionStorage.getItem("loginType");
       getAccessToken(authorizationCode, loginType);

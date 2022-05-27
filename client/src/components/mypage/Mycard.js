@@ -4,7 +4,7 @@ import "../../css/mypage/Mycard.css";
 import Footer from "../Footer";
 import addPage from "../../images/Add NewImg.png";
 import axios from "axios";
-import { loadingOn, loadingOff } from "../loading/Loading";
+import { spinnerOn, spinnerOff } from "../loading/SpinnerSwitch";
 import dotenv from "dotenv";
 dotenv.config();
 axios.default.withCredentials = true;
@@ -14,24 +14,24 @@ const Mycard = ({ setLoading }) => {
   const [cards, setCards] = useState([]);
 
   useEffect(async () => {
-    if (accessToken) {
-      try {
-        await loadingOn(setLoading);
-        const card = await axios.get(
-          `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        const cardImage = card.data;
-        setCards([...cardImage]);
-        await loadingOff(setLoading);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    // if (accessToken) {
+    //   try {
+    //     await spinnerOn(setLoading);
+    //     const card = await axios.get(
+    //       `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard`,
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${accessToken}`,
+    //         },
+    //       }
+    //     );
+    //     const cardImage = card.data;
+    //     setCards([...cardImage]);
+    //     await spinnerOff(setLoading);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
   }, []);
 
   const deleteCard = (card) => {
