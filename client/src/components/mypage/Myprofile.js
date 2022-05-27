@@ -8,7 +8,6 @@ dotenv.config();
 axios.default.withCredentials = true;
 
 const Myprofile = () => {
-  const { clientWidth } = document.body;
   const accessToken = sessionStorage.getItem("accessTokenSession");
   const imgInputRef = useRef();
   const [userInfo, setUserInfo] = useState({

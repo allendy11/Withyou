@@ -1,7 +1,7 @@
 import React from "react";
 import html2canvse from "html2canvas";
 import axios from "axios";
-import { loadingOn, loadingOff } from "../../loading/Loading";
+import { spinnerOn, spinnerOff } from "../../loading/SpinnerSwitch";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -18,7 +18,7 @@ export default function SaveToServer({
 }) {
   async function saveToServer() {
     if (isLogin) {
-      await loadingOn(setLoading);
+      await spinnerOn(setLoading);
       await deSelectObject();
       await html2canvse(document.querySelector("#canvas-paper"))
         .then((canvas) => {
@@ -55,7 +55,7 @@ export default function SaveToServer({
             .then(async () => {
               setIsMessage(true);
               setIsSuccessMessage(true);
-              await loadingOff(setLoading);
+              await spinnerOff(setLoading);
             })
             .catch((err) => {
               setIsMessage(true);

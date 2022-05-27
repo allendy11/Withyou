@@ -5,7 +5,7 @@ import loginModal from "../../images/signup.jpg";
 import Signup from "../login/Signup";
 import Oauth from "../login/Oauth";
 import axios from "axios";
-import { loadingOn, loadingOff } from "../loading/Loading";
+import { spinnerOn, spinnerOff } from "../loading/SpinnerSwitch";
 import dotenv from "dotenv";
 dotenv.config();
 axios.default.withCredentials = true;
@@ -20,6 +20,7 @@ const Login = ({
   setLoading,
 }) => {
   const [inputErr, setInputErr] = useState(false);
+  const [errMessage, setErrMessage] = useState([]);
   const [userInput, setUserInput] = useState({
     email: "",
     password: "",
@@ -33,15 +34,11 @@ const Login = ({
   };
   const handleClick = async (e) => {
     try {
-      await loadingOn(setLoading);
+      await spinnerOn(setLoading);
       const data = await axios({
         method: "POST",
         url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signin`,
         data: userInput,
-        // 여기서 then을 걸어서, 정상적으로 받아오면, 다음 작업을 들어가는 식이 맞지 않나...? 잘 모르겠음
-      }).catch(async (err) => {
-        await loadingOff(setLoading);
-        setInputErr(true);
       });
       const { accessToken } = data.data;
       sessionStorage.setItem("isLoginSession", true);
@@ -49,10 +46,16 @@ const Login = ({
       setAccessToken(accessToken);
       setLoginBtn(false);
       setIsLogin(true);
-      await loadingOff(setLoading);
+      await spinnerOff(setLoading);
       window.location.assign(`${process.env.REACT_APP_CLIENT_LOCAL_URL}`);
     } catch (err) {
-      setInputErr(true);
+      if (err.request.status === 404) {
+        setErrMessage([
+          "아이디 또는 비밀번호가 잘못 입력 되었습니다.",
+          "아이디와 비밀번호를 정확히 입력해 주세요.",
+        ]);
+      }
+      await spinnerOff(setLoading);
     }
   };
 
@@ -122,10 +125,11 @@ const Login = ({
                 ></input>
                 <label>비밀번호</label>
               </div>
-              {inputErr ? (
+              {errMessage.length ? (
                 <div className="login-errMsg">
-                  <div>아이디 또는 비밀번호가 잘못 입력 되었습니다. </div>
-                  <div>아이디와 비밀번호를 정확히 입력해 주세요.</div>
+                  {errMessage.map((el) => {
+                    return <div>{el}</div>;
+                  })}
                 </div>
               ) : null}
               <div className="login-button-box">

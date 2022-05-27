@@ -67,13 +67,29 @@ const Signup = ({
     } else {
       if (!errModal) {
         try {
+          // 회원가입
           const data = await axios({
             method: "POST",
             url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signup`,
             data: userInput,
           });
+          // 회원가입 후 자동 로그인
+          const tokenData = await axios({
+            method: "POST",
+            url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signin`,
+            data: { email: userInput.email, password: userInput.password },
+          });
+          const { accessToken } = tokenData.data;
 
-          if (data.data.message !== "ok") {
+          sessionStorage.setItem("isLoginSession", true);
+          sessionStorage.setItem("accessTokenSession", accessToken);
+          setIsLogin(true);
+          setAccessToken(accessToken);
+          setLoginBtn(false);
+          window.location.assign(`${process.env.REACT_APP_CLIENT_LOCAL_URL}`);
+        } catch (err) {
+          if (err.request.status === 401) {
+            // 회원가입시, 이메일 중복되는 경우
             setIsLogin(false);
             setErrModal(true);
             setErrMessage("이미 존재하는 이메일 입니다");
@@ -86,23 +102,9 @@ const Signup = ({
               image: "",
             });
           } else {
-            const tokenData = await axios({
-              method: "POST",
-              url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signin`,
-              data: { email: userInput.email, password: userInput.password },
-            });
-            const { accessToken } = tokenData.data;
-
-            sessionStorage.setItem("isLoginSession", true);
-            sessionStorage.setItem("accessTokenSession", accessToken);
-            setIsLogin(true);
-            setAccessToken(accessToken);
-            setLoginBtn(false);
-            window.location.assign(`${process.env.REACT_APP_CLIENT_LOCAL_URL}`);
+            setErrModal(true);
+            setErrMessage("모든 항목은 필수예요");
           }
-        } catch (err) {
-          setErrModal(true);
-          setErrMessage("모든 항목은 필수예요");
         }
       }
     }
