@@ -10,10 +10,17 @@ const ProfileContainer = ({
   const { username, email, mobile } = userInfo;
 
   const handleChange = (e) => {
-    setUserInput({ ...userInput, [e.target.id]: e.target.value });
+    if (e.target.id === "username") {
+    } else if (e.target.id === "mobile") {
+    }
+    setUserInput({
+      ...userInput,
+      [e.target.id]: e.target.value,
+    });
   };
   return (
     <div className="userinfo">
+      {console.log(userInfo, userInput)}
       <div id="e-mail" className="uerInfo-row">
         <span>💫 email : </span>
         <span>{email}</span>
@@ -25,7 +32,7 @@ const ProfileContainer = ({
             id="username"
             type="text"
             value={userInput.username}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           ></input>
         ) : (
           <span>{username}</span>
@@ -38,7 +45,7 @@ const ProfileContainer = ({
             id="mobile"
             type="text"
             value={userInput.mobile}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           ></input>
         ) : (
           <span>{mobile}</span>

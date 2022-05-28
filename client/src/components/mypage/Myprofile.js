@@ -121,14 +121,14 @@ const Myprofile = () => {
           <ImageContainer
             userInfo={userInfo}
             setUserInfo={setUserInfo}
-            userInput={userInfo}
+            userInput={userInput}
             setUserInput={setUserInput}
             editProfileBtn={editProfileBtn}
           />
           <ProfileContainer
             userInfo={userInfo}
             setUserInfo={setUserInfo}
-            userInput={userInfo}
+            userInput={userInput}
             setUserInput={setUserInput}
             editProfileBtn={editProfileBtn}
           />
