@@ -1,15 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import addImg from "../../images/manImage.svg";
 import "../../css/mypage/Myprofile.css";
+import ImageContainer from "./myprofile/ImageContainer";
+import ProfileContainer from "./myprofile/ProfileContainer";
 import dotenv from "dotenv";
+// import edit from "../../../../server/controllers/user/edit";
 dotenv.config();
 
 axios.default.withCredentials = true;
 
 const Myprofile = () => {
   const accessToken = sessionStorage.getItem("accessTokenSession");
-  const imgInputRef = useRef();
+  const [editProfileBtn, setEditProfileBtn] = useState(false);
   const [userInfo, setUserInfo] = useState({
     username: "",
     email: "",
@@ -21,8 +23,6 @@ const Myprofile = () => {
     mobile: "",
     image: "",
   });
-  const { username, email, mobile } = userInfo;
-  const [editProfileBtn, setEditProfileBtn] = useState(false);
   const handleClick = async (e) => {
     // const loginType = sessionStorage.getItem("loginType");
 
@@ -62,9 +62,6 @@ const Myprofile = () => {
       });
       setEditProfileBtn(false);
     }
-  };
-  const handleChange = (e) => {
-    setUserInput({ ...userInput, [e.target.id]: e.target.value });
   };
 
   useEffect(() => {
@@ -119,108 +116,40 @@ const Myprofile = () => {
   return (
     <div>
       <div className="mypage-title">⭐️ My Profile</div>
-      {editProfileBtn ? (
-        <div>
-          <div id="profile-content">
-            <div className="profile-image">
-              <div className="profile-image-box">
-                <img
-                  id="image"
-                  src={userInfo.image ? userInfo.image : addImg}
-                  alt="#"
-                  style={{ pointerEvents: "none" }}
-                />
-              </div>
-
-              <input
-                ref={imgInputRef}
-                type="file"
-                id="add-image"
-                style={{
-                  display: "none",
-                }}
-                onChange={pofileImgHandler}
-              ></input>
-              <button
-                id="img-add-button"
-                onClick={() => imgInputRef.current.click()}
-              >
-                Add Image
-              </button>
-            </div>
-            <div className="userinfo">
-              <div id="e-mail" className="uerInfo-row">
-                <span>💫 email : </span>
-                <span>{email}</span>
-              </div>
-              <div id="username" className="uerInfo-row">
-                <div>
-                  <span>💫 username : </span>
-                  <input
-                    id="username"
-                    type="text"
-                    value={userInput.username}
-                    onChange={handleChange}
-                  ></input>
-                </div>
-              </div>
-              <div id="mobile" className="uerInfo-row">
-                <div>
-                  <span>💫 mobile : </span>
-                  <input
-                    id="mobile"
-                    type="text"
-                    value={userInput.mobile}
-                    onChange={handleChange}
-                  ></input>
-                </div>
-              </div>
-            </div>
-            <div className="button-box">
-              <button id="btn-save" onClick={handleClick}>
-                Save
-              </button>
-              <button id="btn-cancel" onClick={handleClick}>
-                Cancel
-              </button>
-            </div>
-          </div>
+      <div>
+        <div id="profile-content">
+          <ImageContainer
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            userInput={userInfo}
+            setUserInput={setUserInput}
+            editProfileBtn={editProfileBtn}
+          />
+          <ProfileContainer
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            userInput={userInfo}
+            setUserInput={setUserInput}
+            editProfileBtn={editProfileBtn}
+          />
         </div>
-      ) : (
-        <div>
-          <div id="profile-content">
-            <div className="profile-image">
-              <div className="profile-image-box">
-                <img
-                  id="image"
-                  src={userInfo.image ? userInfo.image : addImg}
-                  alt="#"
-                  style={{ pointerEvents: "none" }}
-                />
-              </div>
-            </div>
-            <div className="userinfo">
-              <div id="e-mail" className="uerInfo-row">
-                <span>💫 email : </span>
-                <span>{email}</span>
-              </div>
-              <div id="username" className="uerInfo-row">
-                <span>💫 username : </span>
-                <span>{username}</span>
-              </div>
-              <div id="mobile" className="uerInfo-row">
-                <span>💫 mobile : </span>
-                <span>{mobile}</span>
-              </div>
-            </div>
+        {editProfileBtn ? (
+          <div className="button-box">
+            <button id="btn-save" onClick={handleClick}>
+              Save
+            </button>
+            <button id="btn-cancel" onClick={handleClick}>
+              Cancel
+            </button>
           </div>
+        ) : (
           <div className="button-box">
             <button id="btn-edit" onClick={handleClick}>
               Edit
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
