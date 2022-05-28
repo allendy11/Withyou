@@ -39,6 +39,12 @@
   height: 200px;
   cursor: pointer;
 }
+.profile-editImage-btnBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #img-add-button {
   width: 100px;
   height: 33px;
@@ -102,7 +108,7 @@
   height: 35px;
   font-size: 18px;
   border-radius: 0.5rem;
-  font-family: 'BinggraeMelona';
+  font-family: "BinggraeMelona";
   cursor: pointer;
   border: 2px solid #f2f0ec;
   background-color: black;
