@@ -77,17 +77,22 @@
 }
 
 .userinfo input {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width: 12rem;
   height: 1.5rem;
   border: 1px solid rgb(234, 236, 239);
   border-radius: 12px;
   padding-left: 1rem;
 }
+.userinfo input#mobile::placeholder {
+  font-size: 1.2rem;
+}
 .profile-errMsg {
   position: absolute;
   bottom: 2rem;
   left: 17rem;
+  font-size: 1rem;
+  color: red;
 }
 .button-box {
   position: absolute;
@@ -172,12 +177,15 @@
   }
 
   .userinfo input {
-    font-size: 3vw;
+    font-size: 1rem;
     width: 25vw;
     height: 1.3rem;
     border: 1px solid rgb(234, 236, 239);
     border-radius: 12px;
     padding-left: 1rem;
+  }
+  .userinfo input#mobile::placeholder {
+    font-size: 1rem;
   }
 
   .mypage-button {

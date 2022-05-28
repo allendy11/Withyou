@@ -32,14 +32,10 @@ const Myprofile = () => {
     } else if (e.target.id === "btn-save") {
       var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
       const mobileNum = userInput.mobile;
-      if (
-        mobileNum !== undefined &&
-        mobileNum !== "" &&
-        !regPhone.test(userInput.mobile)
-      ) {
+      console.log(mobileNum);
+      if (mobileNum !== "" && !regPhone.test(userInput.mobile)) {
         setProfileErr("전화번호 형식이 올바르지 않습니다.");
       } else {
-        setProfileErr("");
         try {
           const data = await axios({
             method: "PUT",
@@ -51,18 +47,13 @@ const Myprofile = () => {
             headers: {
               authorization: `Bearer ${accessToken}`,
             },
-          }).catch((err) => alert(err));
+          });
           setUserInfo({
             ...userInfo,
-            email: data.data.email,
-            username: data.data.username,
-            mobile: data.data.mobile,
+            username: userInput.username,
+            mobile: userInput.mobile,
           });
-          setUserInput({
-            ...userInput,
-            username: data.data.username,
-            mobile: data.data.mobile,
-          });
+          setProfileErr("");
           setEditProfileBtn(false);
         } catch (err) {}
       }
@@ -127,6 +118,7 @@ const Myprofile = () => {
   };
   return (
     <div>
+      {console.log(userInfo, userInput)}
       <div className="mypage-title">⭐️ My Profile</div>
       <div>
         <div id="profile-content">

@@ -46,6 +46,7 @@ const ProfileContainer = ({
             type="text"
             value={userInput.mobile}
             onChange={(e) => handleChange(e)}
+            placeholder="010-0000-0000"
           ></input>
         ) : (
           <span>{mobile}</span>
