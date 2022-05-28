@@ -12,6 +12,7 @@ axios.default.withCredentials = true;
 const Myprofile = () => {
   const accessToken = sessionStorage.getItem("accessTokenSession");
   const [editProfileBtn, setEditProfileBtn] = useState(false);
+  const [profileErr, setProfileErr] = useState("");
   const [userInfo, setUserInfo] = useState({
     username: "",
     email: "",
@@ -29,31 +30,42 @@ const Myprofile = () => {
     if (e.target.id === "btn-edit") {
       setEditProfileBtn(true);
     } else if (e.target.id === "btn-save") {
-      try {
-        const data = await axios({
-          method: "POST",
-          url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile`,
-          data: {
-            username: userInput.username,
-            mobile: userInput.mobile,
-          },
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-        }).catch((err) => alert(err));
-        setUserInfo({
-          ...userInfo,
-          email: data.data.email,
-          username: data.data.username,
-          mobile: data.data.mobile,
-        });
-        setUserInput({
-          ...userInput,
-          username: data.data.username,
-          mobile: data.data.mobile,
-        });
-        setEditProfileBtn(false);
-      } catch (err) {}
+      var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+      const mobileNum = userInput.mobile;
+      if (
+        mobileNum !== undefined &&
+        mobileNum !== "" &&
+        !regPhone.test(userInput.mobile)
+      ) {
+        setProfileErr("전화번호 형식이 올바르지 않습니다.");
+      } else {
+        setProfileErr("");
+        try {
+          const data = await axios({
+            method: "PUT",
+            url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile`,
+            data: {
+              username: userInput.username,
+              mobile: userInput.mobile,
+            },
+            headers: {
+              authorization: `Bearer ${accessToken}`,
+            },
+          }).catch((err) => alert(err));
+          setUserInfo({
+            ...userInfo,
+            email: data.data.email,
+            username: data.data.username,
+            mobile: data.data.mobile,
+          });
+          setUserInput({
+            ...userInput,
+            username: data.data.username,
+            mobile: data.data.mobile,
+          });
+          setEditProfileBtn(false);
+        } catch (err) {}
+      }
     } else if (e.target.id === "btn-cancel") {
       setUserInput({
         username: userInfo.username,
@@ -131,6 +143,7 @@ const Myprofile = () => {
             userInput={userInput}
             setUserInput={setUserInput}
             editProfileBtn={editProfileBtn}
+            profileErr={profileErr}
           />
         </div>
         {editProfileBtn ? (

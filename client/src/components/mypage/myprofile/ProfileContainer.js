@@ -6,6 +6,7 @@ const ProfileContainer = ({
   userInput,
   setUserInput,
   editProfileBtn,
+  profileErr,
 }) => {
   const { username, email, mobile } = userInfo;
 
@@ -20,7 +21,6 @@ const ProfileContainer = ({
   };
   return (
     <div className="userinfo">
-      {console.log(userInfo, userInput)}
       <div id="e-mail" className="uerInfo-row">
         <span>💫 email : </span>
         <span>{email}</span>
@@ -51,6 +51,9 @@ const ProfileContainer = ({
           <span>{mobile}</span>
         )}
       </div>
+      {editProfileBtn ? (
+        <div className="profile-errMsg">{profileErr}</div>
+      ) : null}
     </div>
   );
 };

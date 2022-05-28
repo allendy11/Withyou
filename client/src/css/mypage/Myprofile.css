@@ -84,7 +84,11 @@
   border-radius: 12px;
   padding-left: 1rem;
 }
-
+.profile-errMsg {
+  position: absolute;
+  bottom: 2rem;
+  left: 17rem;
+}
 .button-box {
   position: absolute;
   bottom: 0;
