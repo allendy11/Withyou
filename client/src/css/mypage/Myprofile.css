@@ -41,28 +41,32 @@
 }
 .profile-editImage-btnBox {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
 }
-#img-add-button {
-  width: 100px;
-  height: 33px;
+.profile-editImage-btnBox > label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  width: 60px;
+  height: 25px;
   font-size: 17px;
   border: 2px solid black;
   border-radius: 0.3rem;
   cursor: pointer;
   background-color: #f5f5f5;
-  position: absolute;
-  bottom: 0;
 }
 
-#img-add-button:hover {
+.profile-editImage-btnBox > label:hover {
   background-color: rgb(253, 178, 169);
   transition: 0.5s;
 }
 
-#img-add-button:not(:hover) {
+.profile-editImage-btnBox > label:not(:hover) {
   background-color: #f5f5f5;
 }
 
@@ -77,14 +81,23 @@
 }
 
 .userinfo input {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width: 12rem;
   height: 1.5rem;
   border: 1px solid rgb(234, 236, 239);
   border-radius: 12px;
   padding-left: 1rem;
 }
-
+.userinfo input#mobile::placeholder {
+  font-size: 1.2rem;
+}
+.profile-errMsg {
+  position: absolute;
+  bottom: 2rem;
+  left: 17rem;
+  font-size: 1rem;
+  color: red;
+}
 .button-box {
   position: absolute;
   bottom: 0;
@@ -168,12 +181,15 @@
   }
 
   .userinfo input {
-    font-size: 3vw;
+    font-size: 1rem;
     width: 25vw;
     height: 1.3rem;
     border: 1px solid rgb(234, 236, 239);
     border-radius: 12px;
     padding-left: 1rem;
+  }
+  .userinfo input#mobile::placeholder {
+    font-size: 1rem;
   }
 
   .mypage-button {

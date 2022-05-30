@@ -12,6 +12,7 @@ axios.default.withCredentials = true;
 const Myprofile = () => {
   const accessToken = sessionStorage.getItem("accessTokenSession");
   const [editProfileBtn, setEditProfileBtn] = useState(false);
+  const [profileErr, setProfileErr] = useState("");
   const [userInfo, setUserInfo] = useState({
     username: "",
     email: "",
@@ -24,36 +25,36 @@ const Myprofile = () => {
     image: "",
   });
   const handleClick = async (e) => {
-    // const loginType = sessionStorage.getItem("loginType");
-
     if (e.target.id === "btn-edit") {
       setEditProfileBtn(true);
     } else if (e.target.id === "btn-save") {
-      try {
-        const data = await axios({
-          method: "POST",
-          url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile`,
-          data: {
+      var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+      const mobileNum = userInput.mobile;
+      console.log(mobileNum);
+      if (mobileNum !== "" && !regPhone.test(userInput.mobile)) {
+        setProfileErr("전화번호 형식이 올바르지 않습니다.");
+      } else {
+        try {
+          const data = await axios({
+            method: "PUT",
+            url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile`,
+            data: {
+              username: userInput.username,
+              mobile: userInput.mobile,
+            },
+            headers: {
+              authorization: `Bearer ${accessToken}`,
+            },
+          });
+          setUserInfo({
+            ...userInfo,
             username: userInput.username,
             mobile: userInput.mobile,
-          },
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-        }).catch((err) => alert(err));
-        setUserInfo({
-          ...userInfo,
-          email: data.data.email,
-          username: data.data.username,
-          mobile: data.data.mobile,
-        });
-        setUserInput({
-          ...userInput,
-          username: data.data.username,
-          mobile: data.data.mobile,
-        });
-        setEditProfileBtn(false);
-      } catch (err) {}
+          });
+          setProfileErr("");
+          setEditProfileBtn(false);
+        } catch (err) {}
+      }
     } else if (e.target.id === "btn-cancel") {
       setUserInput({
         username: userInfo.username,
@@ -91,30 +92,10 @@ const Myprofile = () => {
       }
     }
   }, []);
-  const pofileImgHandler = async (event) => {
-    let reader = new FileReader();
 
-    if (event.target.files[0]) {
-      reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
-    }
-    const formData = new FormData();
-    formData.append("img", event.target.files[0]);
-    const accessTokenSession = sessionStorage.getItem("accessTokenSession");
-
-    const res = await axios.put(
-      `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile/image`,
-      formData,
-      {
-        headers: {
-          authorization: `Bearer ${accessTokenSession}`,
-          "content-type": "multipart/form-data boundary=something",
-        },
-      }
-    );
-    setUserInfo({ ...userInfo, image: res.data.image });
-  };
   return (
     <div>
+      {console.log(userInfo)}
       <div className="mypage-title">⭐️ My Profile</div>
       <div>
         <div id="profile-content">
@@ -131,6 +112,7 @@ const Myprofile = () => {
             userInput={userInput}
             setUserInput={setUserInput}
             editProfileBtn={editProfileBtn}
+            profileErr={profileErr}
           />
         </div>
         {editProfileBtn ? (
