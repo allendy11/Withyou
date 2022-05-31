@@ -70,6 +70,7 @@ export default function SaveToServer({
       setIsMessage(true);
       setIsClientError(true);
     }
+    spinnerOff(setLoading);
   }
 
   return (
