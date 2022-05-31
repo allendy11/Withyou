@@ -14,24 +14,23 @@ const Mycard = ({ setLoading }) => {
   const [cards, setCards] = useState([]);
 
   useEffect(async () => {
-    // if (accessToken) {
-    //   try {
-    //     await spinnerOn(setLoading);
-    //     const card = await axios.get(
-    //       `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard`,
-    //       {
-    //         headers: {
-    //           Authorization: `Bearer ${accessToken}`,
-    //         },
-    //       }
-    //     );
-    //     const cardImage = card.data;
-    //     setCards([...cardImage]);
-    //     await spinnerOff(setLoading);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
+    if (accessToken) {
+      try {
+        await spinnerOn(setLoading);
+        axios({
+          method: "GET",
+          url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }).then((res) => {
+          setCards([...res.data.cards]);
+          spinnerOff(setLoading);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }, []);
 
   const deleteCard = (card) => {

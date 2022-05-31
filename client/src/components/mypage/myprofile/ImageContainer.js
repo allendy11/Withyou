@@ -52,7 +52,8 @@ const ImageContainer = ({
       <div className="profile-image-box">
         <img
           id="image"
-          src={image ? image : defaultImage}
+          src={image ? `${image.slice(11)}` : defaultImage} // 테스트용 추후 삭제
+          // src={image ? image : defaultImage}
           alt="#"
           style={{ pointerEvents: "none" }}
         />
