@@ -24,7 +24,7 @@ const Mycard = ({ setLoading }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }).then((res) => {
-          setCards([...res.data.cards]);
+          if (res.data.cards) setCards([...res.data.cards]);
           spinnerOff(setLoading);
         });
       } catch (err) {
@@ -34,10 +34,19 @@ const Mycard = ({ setLoading }) => {
   }, []);
 
   const deleteCard = (card) => {
-    axios.get(
-      `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard/delete/${card.id}`
-    );
-    setCards(cards.filter((el) => el.id !== card.id));
+    try {
+      axios({
+        method: "DELETE",
+        url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard/${card.id}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }).then((res) => {
+        setCards(cards.filter((el) => el.id !== card.id));
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
   function toDataURL(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -71,6 +80,7 @@ const Mycard = ({ setLoading }) => {
   };
   return (
     <div>
+      {console.log(cards)}
       <div className="mypage-title">⭐️ My Card</div>
 
       <div className="card-box-container">
