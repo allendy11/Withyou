@@ -2,7 +2,6 @@ const { Card } = require("../../models");
 const auth = require("../../middleware/auth");
 
 module.exports = async (req, res) => {
-  console.log(req.file);
   try {
     const authHeader = await auth(req);
     if (!authHeader) {

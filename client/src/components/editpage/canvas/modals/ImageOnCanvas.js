@@ -82,6 +82,7 @@ export default function ImageOnCanvas({
           height: style.height,
           transform: style.transform,
         }}
+        alt={id}
       />
     </div>
   );

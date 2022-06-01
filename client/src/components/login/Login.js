@@ -19,7 +19,6 @@ const Login = ({
   setLandingOn,
   setLoading,
 }) => {
-  const [inputErr, setInputErr] = useState(false);
   const [errMessage, setErrMessage] = useState([]);
   const [userInput, setUserInput] = useState({
     email: "",

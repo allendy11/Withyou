@@ -1,5 +1,5 @@
 import React from "react";
-import naver from "../../images/naver.png";
+// import naver from "../../images/naver.png";
 import kakao from "../../images/kakao.png";
 import github from "../../images/github.png";
 import dotenv from "dotenv";

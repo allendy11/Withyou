@@ -68,25 +68,28 @@ const Signup = ({
       if (!errModal) {
         try {
           // 회원가입
-          const data = await axios({
+          axios({
             method: "POST",
             url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signup`,
             data: userInput,
+          }).then(() => {
+            // 회원가입 후 자동 로그인
+            axios({
+              method: "POST",
+              url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signin`,
+              data: { email: userInput.email, password: userInput.password },
+            }).then((res) => {
+              const { accessToken } = res.data;
+              sessionStorage.setItem("isLoginSession", true);
+              sessionStorage.setItem("accessTokenSession", accessToken);
+              setIsLogin(true);
+              setAccessToken(accessToken);
+              setLoginBtn(false);
+              window.location.assign(
+                `${process.env.REACT_APP_CLIENT_LOCAL_URL}`
+              );
+            });
           });
-          // 회원가입 후 자동 로그인
-          const tokenData = await axios({
-            method: "POST",
-            url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signin`,
-            data: { email: userInput.email, password: userInput.password },
-          });
-          const { accessToken } = tokenData.data;
-
-          sessionStorage.setItem("isLoginSession", true);
-          sessionStorage.setItem("accessTokenSession", accessToken);
-          setIsLogin(true);
-          setAccessToken(accessToken);
-          setLoginBtn(false);
-          window.location.assign(`${process.env.REACT_APP_CLIENT_LOCAL_URL}`);
         } catch (err) {
           if (err.request.status === 401) {
             // 회원가입시, 이메일 중복되는 경우

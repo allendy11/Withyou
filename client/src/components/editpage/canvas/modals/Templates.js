@@ -1,7 +1,6 @@
 import React from "react";
 import "../../../../css/editpage/canvas/modals/Templates.css";
 import samples from "../../../../images/templates/AllTemplate";
-import { spinnerOn, spinnerOff } from "../../../loading/SpinnerSwitch";
 const data = samples;
 
 export default function Templates({

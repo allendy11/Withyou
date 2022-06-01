@@ -38,8 +38,8 @@ export default function App() {
   const getAccessToken = (authorizationCode, loginType) => {
     axios({
       method: "POST",
-      url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/callback`,
-      data: { authorizationCode: authorizationCode, type: loginType },
+      url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/${loginType}`,
+      data: { authorizationCode: authorizationCode },
     }).then((resp) => {
       const { accessToken } = resp.data;
       setIsLogin(true);
@@ -47,12 +47,12 @@ export default function App() {
       sessionStorage.setItem("accessTokenSession", accessToken);
     });
   };
-  useEffect(async () => {
+  useEffect(() => {
     const isLoginSession = sessionStorage.getItem("isLoginSession");
     const accessTokenSession = sessionStorage.getItem("accessTokenSession");
     if (isLoginSession) {
       setIsLogin(isLoginSession);
-      await spinnerOff(setLoading);
+      spinnerOff(setLoading);
     }
     if (accessTokenSession) {
       setAccessToken(accessTokenSession);
@@ -61,7 +61,7 @@ export default function App() {
     const authorizationCode = url.searchParams.get("code");
 
     if (!isLoginSession && authorizationCode) {
-      await spinnerOn(setLoading);
+      spinnerOn(setLoading);
 
       const loginType = sessionStorage.getItem("loginType");
       getAccessToken(authorizationCode, loginType);

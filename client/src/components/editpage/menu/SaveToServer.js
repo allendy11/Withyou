@@ -45,7 +45,7 @@ export default function SaveToServer({
 
           axios({
             method: "POST",
-            url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard/post`,
+            url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/mycard`,
             data: formData,
             headers: {
               authorization: `Bearer ${accessTokenSession}`,

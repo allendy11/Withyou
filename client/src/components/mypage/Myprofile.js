@@ -34,7 +34,7 @@ const Myprofile = () => {
         setProfileErr("전화번호 형식이 올바르지 않습니다.");
       } else {
         try {
-          const data = await axios({
+          axios({
             method: "PUT",
             url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile`,
             data: {
@@ -44,15 +44,18 @@ const Myprofile = () => {
             headers: {
               authorization: `Bearer ${accessToken}`,
             },
+          }).then(() => {
+            setUserInfo({
+              ...userInfo,
+              username: userInput.username,
+              mobile: userInput.mobile,
+            });
+            setProfileErr("");
+            setEditProfileBtn(false);
           });
-          setUserInfo({
-            ...userInfo,
-            username: userInput.username,
-            mobile: userInput.mobile,
-          });
-          setProfileErr("");
-          setEditProfileBtn(false);
-        } catch (err) {}
+        } catch (err) {
+          console.log(err);
+        }
       }
     } else if (e.target.id === "btn-cancel") {
       setUserInput({
@@ -103,6 +106,7 @@ const Myprofile = () => {
             userInput={userInput}
             setUserInput={setUserInput}
             editProfileBtn={editProfileBtn}
+            setEditProfileBtn={setEditProfileBtn}
           />
           <ProfileContainer
             userInfo={userInfo}

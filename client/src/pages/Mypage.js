@@ -3,7 +3,6 @@ import "../css/Mypage.css";
 import Footer from "../components/Footer";
 import Myprofile from "../components/mypage/Myprofile";
 import Mycard from "../components/mypage/Mycard";
-import axios from "axios";
 import { DeleteAccount } from "../components/mypage/DeleteAccount";
 import { DeleteAccountModal } from "../components/mypage/DeleteAccountModal";
 const Mypage = ({

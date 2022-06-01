@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import defaultImage from "../../../images/manImage.svg";
 import axios from "axios";
 const ImageContainer = ({
@@ -7,6 +7,7 @@ const ImageContainer = ({
   userInput,
   setUserInput,
   editProfileBtn,
+  setEditProfileBtn,
 }) => {
   const accessTokenSession = sessionStorage.getItem("accessTokenSession");
   const { image } = userInfo;
@@ -32,7 +33,7 @@ const ImageContainer = ({
           authorization: `Bearer ${accessTokenSession}`,
           "content-type": "multipart/form-data",
         },
-      }).then((res) => console.log(res.data));
+      });
     } else if (e.target.id === "deleteImg") {
       axios({
         url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/profile/image`,
@@ -44,6 +45,7 @@ const ImageContainer = ({
         setUserInfo({ ...userInfo, image: "" });
       });
     }
+    setEditProfileBtn(false);
   };
 
   const sendFile = () => {};
@@ -52,8 +54,7 @@ const ImageContainer = ({
       <div className="profile-image-box">
         <img
           id="image"
-          src={image ? `${image.slice(11)}` : defaultImage} // 테스트용 추후 삭제
-          // src={image ? image : defaultImage}
+          src={image ? image : defaultImage}
           alt="#"
           style={{ pointerEvents: "none" }}
         />
@@ -76,27 +77,6 @@ const ImageContainer = ({
           />
         </form>
       ) : null}
-      {/* <button onClick={sendFile}>save</button> */}
-
-      {/* {editProfileBtn ? (
-        <div className="profile-editImage-btnBox">
-          <input
-            ref={imgInputRef}
-            type="file"
-            id="add-image"
-            style={{
-              display: "none",
-            }}
-            onChange={profileImgHandler}
-          ></input>
-          <button
-            id="img-add-button"
-            onClick={() => imgInputRef.current.click()}
-          >
-            Add Image
-          </button>
-        </div>
-      ) : null} */}
     </div>
   );
 };

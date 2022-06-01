@@ -7,6 +7,7 @@ export default function TemplateOnCanvas({ id, src, style, setObjectStyle }) {
       draggable={false}
       src={src}
       style={setObjectStyle(style)}
+      alt={id}
     />
   );
 }

@@ -34,18 +34,19 @@ const Nav = ({
     }
     if (e.target.id === "logout") {
       try {
-        const data = await axios({
+        axios({
           method: "GET",
           url: `${process.env.REACT_APP_SERVER_LOCAL_URL}/user/signout`,
           headers: {
             authorization: `Bearer ${accessToken}`,
           },
+        }).then(() => {
+          sessionStorage.clear();
+          setAccessToken("");
+          setIsLogin(false);
+          setLoginBtn(false);
+          window.location.assign(process.env.REACT_APP_CLIENT_LOCAL_URL);
         });
-        sessionStorage.clear();
-        setAccessToken("");
-        setIsLogin(false);
-        setLoginBtn(false);
-        window.location.assign(process.env.REACT_APP_CLIENT_LOCAL_URL);
       } catch (err) {
         console.log(err);
       }

@@ -80,7 +80,6 @@ const Mycard = ({ setLoading }) => {
   };
   return (
     <div>
-      {console.log(cards)}
       <div className="mypage-title">⭐️ My Card</div>
 
       <div className="card-box-container">
